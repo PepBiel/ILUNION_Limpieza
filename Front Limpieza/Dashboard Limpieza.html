@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>Dashboard Limpieza — Hospital Clínico Santiago</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  /* ─── ILUNION corporate palette (original — based on public brand hues) ─── */
+  :root{
+    --il-green:       oklch(0.58 0.14 155);   /* primary */
+    --il-green-dark:  oklch(0.42 0.12 155);
+    --il-green-soft:  oklch(0.93 0.04 155);
+    --il-green-tint:  oklch(0.97 0.02 155);
+    --il-red:         oklch(0.60 0.18 28);    /* accent / alertas */
+    --il-red-soft:    oklch(0.94 0.05 28);
+    --il-amber:       oklch(0.76 0.14 75);
+    --il-amber-soft:  oklch(0.95 0.06 85);
+    --il-blue:        oklch(0.60 0.10 240);
+    --il-blue-soft:   oklch(0.95 0.03 240);
+
+    --ink-1: oklch(0.20 0.01 150);
+    --ink-2: oklch(0.38 0.01 150);
+    --ink-3: oklch(0.55 0.01 150);
+    --ink-4: oklch(0.72 0.005 150);
+    --line:  oklch(0.90 0.005 150);
+    --line-2: oklch(0.94 0.005 150);
+    --bg:    oklch(0.985 0.004 150);
+    --surface: #ffffff;
+
+    --r-sm: 6px;
+    --r-md: 10px;
+    --r-lg: 14px;
+    --shadow-sm: 0 1px 2px rgba(10,40,25,.04), 0 1px 1px rgba(10,40,25,.03);
+    --shadow-md: 0 4px 14px rgba(10,40,25,.06), 0 1px 2px rgba(10,40,25,.03);
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink-1);font-family:Inter, system-ui, sans-serif;-webkit-font-smoothing:antialiased}
+  body{min-height:100vh}
+
+  /* scrollbar */
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-thumb{background:oklch(0.88 0.005 150);border-radius:6px}
+  ::-webkit-scrollbar-thumb:hover{background:oklch(0.78 0.005 150)}
+
+  /* Shifts color coding (matches cuadrante shorthand) */
+  .s-M{background:#fff4cc;color:#7a5a00}       /* Mañana */
+  .s-T{background:#cfe6ff;color:#0a3e74}       /* Tarde */
+  .s-N{background:#2a2b4f;color:#e5e7ff}       /* Noche */
+  .s-D{background:var(--line-2);color:var(--ink-3)} /* Descanso */
+  .s-V,.s-V26,.s-V25,.s-V24{background:#d8f1d3;color:#1a5018} /* Vacaciones */
+  .s-B{background:var(--il-red-soft);color:#8a1f15;font-weight:600} /* Baja */
+  .s-A{background:#ece6ff;color:#4a2a8a}       /* Asuntos propios */
+  .s-PS{background:#ffe2b8;color:#7a4200}      /* Permiso sindical */
+  .s-PF{background:#fddfe8;color:#8a1a48}      /* Permiso familiar */
+  .s-PR{background:#d6ecec;color:#155454}
+  .s-RJ{background:#fce5c2;color:#7a4200}
+  .s-PSS{background:#ffe0d8;color:#8a3a1f}
+  .s-E{background:#dcdce2;color:#3a3a45}
+  .s-L{background:#fff0c2;color:#7a5a00}
+  .s-AV{background:#d8f1d3;color:#1a5018}
+  .s-C{background:#f2e4ff;color:#5a2a8a} /* Conciliación/otros */
+
+  /* weekend column tint */
+  .col-weekend{background:oklch(0.97 0.01 150)}
+  .col-festivo{background:oklch(0.96 0.035 28)}
+
+  /* focus ring */
+  button:focus-visible, [role="button"]:focus-visible, input:focus-visible, select:focus-visible{
+    outline:2px solid var(--il-green); outline-offset:2px;
+  }
+
+  .mono{font-family:'JetBrains Mono', ui-monospace, monospace}
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<!-- Data -->
+<script>
+  window.__DATA_URL = 'data.json';
+</script>
+
+<!-- React + Babel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<!-- App modules -->
+<script type="text/babel" src="src/shared.jsx"></script>
+<script type="text/babel" src="src/sidebar.jsx"></script>
+<script type="text/babel" src="src/view_cuadrante.jsx"></script>
+<script type="text/babel" src="src/view_workers.jsx"></script>
+<script type="text/babel" src="src/view_cobertura.jsx"></script>
+<script type="text/babel" src="src/view_incidencias.jsx"></script>
+<script type="text/babel" src="src/view_resumen.jsx"></script>
+<script type="text/babel" src="src/app.jsx"></script>
+
+</body>
+</html>
