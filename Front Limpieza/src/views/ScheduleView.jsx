@@ -439,7 +439,7 @@ export function ScheduleView({
         </div>
       </div>
 
-      <Card style={{ padding: 0 }}>
+      <Card className="schedule-panel" style={{ padding: 0 }}>
         <div className="table-shell">
           <table className="schedule-table">
             <thead>

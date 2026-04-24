@@ -371,28 +371,14 @@ Recreable o regenerable:
 - `dist/`
 - `generated/`
 
-## 16. Que puedes borrar fuera de esta carpeta
-
-Como el proyecto ya es autocontenido, ya no necesitas para ejecucion:
-
-- `../1. Santiago - Limpieza/`
-- `../__MACOSX/`
-- `../ilunion.ipynb`
-- `../.idea/` si no quieres ficheros del IDE
-
-La referencia util ya esta copiada dentro de:
-
-- `backend/assets/inputs/`
-- `backend/assets/algorithm/`
-
-## 17. Limitaciones actuales
+## 16. Limitaciones actuales
 
 - El motor de generacion sigue acoplado al notebook original.
 - Las ediciones manuales no se persisten aun como nueva fuente de verdad.
 - El dashboard esta preparado para producto local, pero no para despliegue multiusuario ni concurrencia.
 - El año operativo esta fijado en la integracion actual a `2026`.
 
-## 18. Siguiente evolucion natural
+## 17. Siguiente evolucion natural
 
 Los siguientes pasos tecnicos mas razonables son:
 

@@ -62,7 +62,7 @@ export function HoursView({ hospitalData }) {
         />
       </div>
 
-      <Card style={{ padding: 0 }}>
+      <Card className="data-panel" style={{ padding: 0 }}>
         <div className="table-shell">
           <table className="data-table">
             <thead>

@@ -682,6 +682,28 @@ a {
   border-radius: 14px;
 }
 
+.schedule-panel {
+  overflow: hidden;
+}
+
+.schedule-panel .table-shell {
+  height: clamp(320px, 60vh, 720px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable both-edges;
+}
+
+.data-panel {
+  overflow: hidden;
+}
+
+.data-panel .table-shell {
+  height: clamp(300px, 58vh, 680px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable both-edges;
+}
+
 .schedule-table,
 .data-table {
   width: 100%;
@@ -1197,5 +1219,13 @@ a {
   .modal-panel {
     width: 100%;
     max-height: calc(100vh - 20px);
+  }
+
+  .schedule-panel .table-shell {
+    height: min(54vh, 520px);
+  }
+
+  .data-panel .table-shell {
+    height: min(50vh, 460px);
   }
 }
