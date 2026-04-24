@@ -49,20 +49,6 @@ Entornos:
 - frontend: `http://127.0.0.1:5173`
 - API local: `http://127.0.0.1:8787`
 
-## Que se puede borrar de la raiz
+## Autores
 
-Ahora mismo no son necesarios para ejecutar el sistema:
-
-- `1. Santiago - Limpieza/`
-- `__MACOSX/`
-- `ilunion.ipynb`
-- `.idea/` si no quieres archivos del IDE
-
-El motivo es que el proyecto ya usa sus propias copias internas en:
-
-- `Front Limpieza/backend/assets/algorithm/`
-- `Front Limpieza/backend/assets/inputs/`
-
-## Nota
-
-Si quieres dejar el repositorio minimo, el siguiente paso natural es borrar esas carpetas historicas y quedarte solo con `Front Limpieza` y este `README.md`.
+Proyecto desarrollado por **Jorge Elías García**, **Sara Fernández Malvido**, **Jordi Florit Ensenyat** y **Josep Gabriel Fornes Reynes**.
