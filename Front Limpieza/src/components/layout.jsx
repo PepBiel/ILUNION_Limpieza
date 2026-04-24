@@ -43,6 +43,7 @@ function SidebarContent({
   activeHospital,
   onHospitalChange,
   data,
+  generatedHospitals,
   onCloseMobile,
   mobile,
 }) {
@@ -67,6 +68,7 @@ function SidebarContent({
         <div className="sidebar-label">Hospital</div>
         <div className="hospital-switch">
           {HOSPITAL_OPTIONS.map((option) => {
+            const isGenerated = generatedHospitals?.[option.id];
             const count = data.hospitals[option.id].workers.length;
             return (
               <button
@@ -78,7 +80,9 @@ function SidebarContent({
                 }}
               >
                 <div>{option.label}</div>
-                <div style={{ fontSize: 10.5, marginTop: 4 }}>{count} personas</div>
+                <div style={{ fontSize: 10.5, marginTop: 4 }}>
+                  {isGenerated ? `${count} personas` : "Sin generar"}
+                </div>
               </button>
             );
           })}
@@ -135,7 +139,8 @@ export function AppShell({
   activeView,
   onViewChange,
   currentHospitalData,
-  schedulerStatus,
+  currentHospitalGenerated,
+  generatedHospitals,
   chatOpen,
   onToggleChat,
   isTablet,
@@ -156,6 +161,7 @@ export function AppShell({
           activeHospital={activeHospital}
           onHospitalChange={onHospitalChange}
           data={data}
+          generatedHospitals={generatedHospitals}
         />
       ) : (
         <>
@@ -169,6 +175,7 @@ export function AppShell({
               activeHospital={activeHospital}
               onHospitalChange={onHospitalChange}
               data={data}
+              generatedHospitals={generatedHospitals}
               onCloseMobile={onCloseMobileSidebar}
               mobile
             />
@@ -190,17 +197,23 @@ export function AppShell({
             </div>
           </div>
           <div className="toolbar-spacer" />
-          <div className="topbar-summary">
-            <div className="mini-pill">
-              Cobertura <strong>{formatPercent(coveragePct)}</strong>
+          {currentHospitalGenerated ? (
+            <div className="topbar-summary">
+              <div className="mini-pill">
+                Cobertura <strong>{formatPercent(coveragePct)}</strong>
+              </div>
+              <div className="mini-pill">
+                Incidencias <strong>{gaps}</strong>
+              </div>
+              <div className="mini-pill">
+                Desvio <strong>{deviation >= 0 ? `+${deviation}` : deviation}h</strong>
+              </div>
             </div>
+          ) : (
             <div className="mini-pill">
-              Incidencias <strong>{gaps}</strong>
+              Estado <strong>Sin generar</strong>
             </div>
-            <div className="mini-pill">
-              Desvio <strong>{deviation >= 0 ? `+${deviation}` : deviation}h</strong>
-            </div>
-          </div>
+          )}
           <Button variant="default" size="sm" icon="chat" onClick={onToggleChat}>
             {chatOpen ? "Cerrar ayuda" : "Asistente"}
           </Button>

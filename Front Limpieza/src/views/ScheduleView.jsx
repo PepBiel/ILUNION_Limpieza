@@ -12,7 +12,6 @@ import {
 import { dayLetter, daysInMonth, isHoliday, isWeekend } from "../lib/date";
 import { normalizeText } from "../lib/format";
 import { readStoredValue, writeStoredValue } from "../lib/storage";
-import { requestScheduleGeneration } from "../services/schedulerGateway";
 
 function matchesShiftFilter(worker, filter) {
   const text = normalizeText(worker.turnoBase);
@@ -177,7 +176,10 @@ export function ScheduleView({
   setEdits,
   schedulerStatus,
   onShowToast,
-  onGenerated,
+  latestExcelUrl,
+  statusMessage,
+  generationPending,
+  onGenerate,
 }) {
   const year = 2026;
   const [monthIndex, setMonthIndex] = useState(() => {
@@ -189,9 +191,6 @@ export function ScheduleView({
   const [search, setSearch] = useState("");
   const [selectedCell, setSelectedCell] = useState(null);
   const [selectedWorker, setSelectedWorker] = useState(null);
-  const [statusMessage, setStatusMessage] = useState(null);
-  const [generationPending, setGenerationPending] = useState(false);
-  const [latestExcelUrl, setLatestExcelUrl] = useState("");
 
   useEffect(() => {
     writeStoredValue("fl-schedule-month", String(monthIndex));
@@ -256,33 +255,6 @@ export function ScheduleView({
     [edits, hospitalData, hospitalKey, monthIndex, presences],
   );
 
-  async function handleGenerate() {
-    setGenerationPending(true);
-    try {
-      const response = await requestScheduleGeneration({
-        hospital: hospitalKey,
-        year,
-      });
-      if (response?.data) {
-        onGenerated?.(response.data, hospitalKey);
-      }
-      if (response?.excelUrl) {
-        setLatestExcelUrl(response.excelUrl);
-      }
-      setStatusMessage({
-        tone: "success",
-        text: "Cuadrante regenerado con el algoritmo y datos del dashboard actualizados.",
-      });
-    } catch (error) {
-      setStatusMessage({
-        tone: "warning",
-        text: error.message,
-      });
-    } finally {
-      setGenerationPending(false);
-    }
-  }
-
   function handleExport() {
     exportScheduleAsCsv({
       workers: filteredWorkers,
@@ -290,10 +262,6 @@ export function ScheduleView({
       year,
       getValue: getShift,
       filenamePrefix: `cuadrante-${hospitalKey}`,
-    });
-    setStatusMessage({
-      tone: "success",
-      text: "Exportacion CSV generada con el estado actual del cuadrante.",
     });
   }
 
@@ -380,7 +348,7 @@ export function ScheduleView({
         <Button
           variant="primary"
           icon="wand"
-          onClick={handleGenerate}
+          onClick={onGenerate}
           disabled={generationPending}
         >
           {generationPending ? "Lanzando..." : "Generar con algoritmo"}
