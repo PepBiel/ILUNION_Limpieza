@@ -6,7 +6,7 @@ Repositorio del dashboard local y backend de generacion de cuadrantes para el se
 
 La parte operativa del proyecto ya es autocontenida dentro de:
 
-- [Front Limpieza](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza>)
+- [Front Limpieza](</Front Limpieza>)
 
 Esa carpeta incluye:
 
@@ -21,17 +21,17 @@ Esa carpeta incluye:
 
 Si quieres dejar el repositorio limpio para uso real, la carpeta importante es:
 
-- [Front Limpieza](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza>)
+- [Front Limpieza](</Front Limpieza>)
 
 Dentro de ella estan:
 
-- [README.md](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/README.md>)
+- [README.md](</Front Limpieza/README.md>)
   Manual completo de uso, arquitectura, entradas, salidas y flujo interno.
-- [server](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/server>)
+- [server](</Front Limpieza/server>)
   Backend Node que expone la API local.
-- [backend](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/backend>)
+- [backend](</Front Limpieza/backend>)
   Wrapper Python del algoritmo y assets base.
-- [src](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/src>)
+- [src](</Front Limpieza/src>)
   Dashboard.
 
 ## Como arrancarlo
@@ -49,20 +49,6 @@ Entornos:
 - frontend: `http://127.0.0.1:5173`
 - API local: `http://127.0.0.1:8787`
 
-## Que se puede borrar de la raiz
+## Autores
 
-Ahora mismo no son necesarios para ejecutar el sistema:
-
-- `1. Santiago - Limpieza/`
-- `__MACOSX/`
-- `ilunion.ipynb`
-- `.idea/` si no quieres archivos del IDE
-
-El motivo es que el proyecto ya usa sus propias copias internas en:
-
-- `Front Limpieza/backend/assets/algorithm/`
-- `Front Limpieza/backend/assets/inputs/`
-
-## Nota
-
-Si quieres dejar el repositorio minimo, el siguiente paso natural es borrar esas carpetas historicas y quedarte solo con `Front Limpieza` y este `README.md`.
+Proyecto desarrollado por **Jorge Elías García**, **Sara Fernández Malvido**, **Jordi Florit Ensenyat** y **Josep Gabriel Fornes Reynes**.

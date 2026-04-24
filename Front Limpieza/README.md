@@ -31,21 +31,21 @@ El backend permite:
 
 ## 2. Estructura del proyecto
 
-- [src](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/src>)
+- [src](</Front Limpieza/src>)
   Frontend React + Vite.
-- [server](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/server>)
+- [server](</Front Limpieza/server>)
   API local en Node.
-- [backend](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/backend>)
+- [backend](</Front Limpieza/backend>)
   Integracion Python con el algoritmo.
-- [backend/assets/inputs](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/backend/assets/inputs>)
+- [backend/assets/inputs](</Front Limpieza/backend/assets/inputs>)
   Excel base de entrada.
-- [backend/assets/algorithm](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/backend/assets/algorithm>)
+- [backend/assets/algorithm](</Front Limpieza/backend/assets/algorithm>)
   Copia local del notebook original.
-- [public/data/dashboard-data.json](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/public/data/dashboard-data.json>)
+- [public/data/dashboard-data.json](</Front Limpieza/public/data/dashboard-data.json>)
   Datos que consume el frontend.
-- [generated](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/generated>)
+- [generated](</Front Limpieza/generated>)
   Excel generados por el algoritmo.
-- [docs/DOMAIN.md](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/docs/DOMAIN.md>)
+- [docs/DOMAIN.md](</Front Limpieza/docs/DOMAIN.md>)
   Resumen funcional del dominio y restricciones principales.
 
 ## 3. Ficheros de entrada y salida
@@ -54,15 +54,15 @@ El backend permite:
 
 El generador usa estos dos ficheros:
 
-- [Listado de Trabajadores.xlsx](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/backend/assets/inputs/Listado de Trabajadores.xlsx>)
-- [PRESENCIAS.xlsx](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/backend/assets/inputs/PRESENCIAS.xlsx>)
+- [Listado de Trabajadores.xlsx](</Front Limpieza/backend/assets/inputs/Listado de Trabajadores.xlsx>)
+- [PRESENCIAS.xlsx](</Front Limpieza/backend/assets/inputs/PRESENCIAS.xlsx>)
 
 ### Salidas generadas
 
 Cada generacion actualiza:
 
-- [dashboard-data.json](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/public/data/dashboard-data.json>)
-- la carpeta [generated](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/generated>)
+- [dashboard-data.json](</Front Limpieza/public/data/dashboard-data.json>)
+- la carpeta [generated](</Front Limpieza/generated>)
 
 Ejemplos de salida:
 
@@ -79,7 +79,7 @@ El proyecto prioriza el Python del entorno virtual `backend/.venv` cuando existe
 
 ## 5. Como arrancar el proyecto
 
-Abre una terminal en [Front Limpieza](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza>).
+Abre una terminal en [Front Limpieza](</Front Limpieza>).
 
 ### 5.1 Instalar dependencias de Node
 
@@ -156,7 +156,7 @@ En este modo:
 
 ## 8. API local disponible
 
-La API vive en [server/index.mjs](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/server/index.mjs>).
+La API vive en [server/index.mjs](</Front Limpieza/server/index.mjs>).
 
 Rutas actuales:
 
@@ -188,9 +188,9 @@ Valores de `hospital` admitidos:
 Cuando pulsas `Generar con algoritmo` en la vista de cuadrante:
 
 1. El frontend hace `POST /api/generate`.
-2. [server/index.mjs](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/server/index.mjs>) lanza Python.
-3. Python ejecuta [generate_dashboard.py](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/backend/generate_dashboard.py>).
-4. Ese script carga la copia local de [ilunion.ipynb](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/backend/assets/algorithm/ilunion.ipynb>).
+2. [server/index.mjs](</Front Limpieza/server/index.mjs>) lanza Python.
+3. Python ejecuta [generate_dashboard.py](</Front Limpieza/backend/generate_dashboard.py>).
+4. Ese script carga la copia local de [ilunion.ipynb](</Front Limpieza/backend/assets/algorithm/ilunion.ipynb>).
 5. Se reutiliza la logica del solver contenida en el notebook.
 6. Se genera el Excel anual del hospital seleccionado.
 7. Se regenera el bloque correspondiente dentro de `dashboard-data.json`.
@@ -263,7 +263,7 @@ Permite:
 Los trabajadores no se anaden desde la interfaz.
 Se anaden modificando el Excel base:
 
-- [Listado de Trabajadores.xlsx](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/backend/assets/inputs/Listado de Trabajadores.xlsx>)
+- [Listado de Trabajadores.xlsx](</Front Limpieza/backend/assets/inputs/Listado de Trabajadores.xlsx>)
 
 ### Columnas que el sistema espera
 
@@ -309,7 +309,7 @@ Ejemplos de observaciones tipicas que el algoritmo ya contempla a nivel operativ
 
 Las presencias minimas salen de:
 
-- [PRESENCIAS.xlsx](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/backend/assets/inputs/PRESENCIAS.xlsx>)
+- [PRESENCIAS.xlsx](</Front Limpieza/backend/assets/inputs/PRESENCIAS.xlsx>)
 
 Si cambias ese Excel:
 
@@ -334,21 +334,21 @@ En otras palabras:
 
 ## 14. Componentes principales
 
-- [src/App.jsx](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/src/App.jsx>)
+- [src/App.jsx](</Front Limpieza/src/App.jsx>)
   Estado global, hospital activo, vista activa y recarga de datos.
-- [src/views/ScheduleView.jsx](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/src/views/ScheduleView.jsx>)
+- [src/views/ScheduleView.jsx](</Front Limpieza/src/views/ScheduleView.jsx>)
   Cuadrante mensual, edicion y generacion.
-- [src/views/CoverageView.jsx](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/src/views/CoverageView.jsx>)
+- [src/views/CoverageView.jsx](</Front Limpieza/src/views/CoverageView.jsx>)
   Cobertura diaria real frente a minimos.
-- [src/views/WorkersView.jsx](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/src/views/WorkersView.jsx>)
+- [src/views/WorkersView.jsx](</Front Limpieza/src/views/WorkersView.jsx>)
   Plantilla, observaciones y detalle de personas.
-- [src/views/HoursView.jsx](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/src/views/HoursView.jsx>)
+- [src/views/HoursView.jsx](</Front Limpieza/src/views/HoursView.jsx>)
   Computo anual.
-- [src/services/dataService.js](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/src/services/dataService.js>)
+- [src/services/dataService.js](</Front Limpieza/src/services/dataService.js>)
   Lectura y normalizacion de datos.
-- [src/services/schedulerGateway.js](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/src/services/schedulerGateway.js>)
+- [src/services/schedulerGateway.js](</Front Limpieza/src/services/schedulerGateway.js>)
   Cliente de la API del generador.
-- [backend/generate_dashboard.py](</C:/Users/Pep Biel/Documents/GitHub/ILUNION_Limpieza/Front Limpieza/backend/generate_dashboard.py>)
+- [backend/generate_dashboard.py](</Front Limpieza/backend/generate_dashboard.py>)
   Wrapper Python que une notebook, Excel y dashboard.
 
 ## 15. Que se usa realmente para ejecutar el sistema
