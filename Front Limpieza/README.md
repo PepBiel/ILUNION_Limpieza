@@ -1,25 +1,25 @@
 # Front Limpieza
 
-Aplicacion local para visualizar, revisar, editar y regenerar los cuadrantes del servicio de limpieza hospitalaria de Santiago de Compostela.
+Aplicación local para visualizar, revisar, editar y regenerar los cuadrantes del servicio de limpieza hospitalaria de Santiago de Compostela.
 
-El proyecto esta pensado para trabajar de forma autocontenida dentro de esta carpeta, sin depender ya de material externo del reto para su ejecucion diaria.
+El proyecto está pensado para trabajar de forma autocontenida dentro de esta carpeta, sin depender ya de material externo del reto para su ejecución diaria.
 
-## 1. Que incluye este proyecto
+## 1. Qué incluye este proyecto
 
 Esta carpeta concentra dos piezas:
 
 1. Dashboard operativo.
-2. Backend local de generacion.
+2. Backend local de generación.
 
 El dashboard permite:
 
-- cambiar entre `Hospital Clinico` y `Hospital Gil Casares`,
+- cambiar entre `Hospital Clínico` y `Hospital Gil Casares`,
 - ver el cuadrante mensual,
 - editar turnos manualmente desde la interfaz,
 - medir el impacto de esos cambios sobre la cobertura,
 - revisar plantilla, plazas y observaciones,
-- consultar el computo anual de horas,
-- lanzar una nueva generacion del cuadrante con el algoritmo.
+- consultar el cómputo anual de horas,
+- lanzar una nueva generación del cuadrante con el algoritmo.
 
 El backend permite:
 
@@ -36,7 +36,7 @@ El backend permite:
 - [server](</Front Limpieza/server>)
   API local en Node.
 - [backend](</Front Limpieza/backend>)
-  Integracion Python con el algoritmo.
+  Integración Python con el algoritmo.
 - [backend/assets/inputs](</Front Limpieza/backend/assets/inputs>)
   Excel base de entrada.
 - [backend/assets/algorithm](</Front Limpieza/backend/assets/algorithm>)
@@ -59,7 +59,7 @@ El generador usa estos dos ficheros:
 
 ### Salidas generadas
 
-Cada generacion actualiza:
+Cada generación actualiza:
 
 - [dashboard-data.json](</Front Limpieza/public/data/dashboard-data.json>)
 - la carpeta [generated](</Front Limpieza/generated>)
@@ -77,7 +77,7 @@ Ejemplos de salida:
 
 El proyecto prioriza el Python del entorno virtual `backend/.venv` cuando existe.
 
-## 5. Como arrancar el proyecto
+## 5. Cómo arrancar el proyecto
 
 Abre una terminal en [Front Limpieza](</Front Limpieza>).
 
@@ -97,7 +97,7 @@ Este comando:
 
 - crea `backend/.venv/`,
 - instala `pandas`, `numpy`, `scipy` y `openpyxl`,
-- deja listo el Python que usara el generador.
+- deja listo el Python que usará el generador.
 
 ### 5.3 Levantar frontend y backend a la vez
 
@@ -125,7 +125,7 @@ Esto arranca:
 - `npm run preview`
   Previsualiza la build con Vite.
 - `npm run check`
-  Verificacion rapida basada en build.
+  Verificación rápida basada en build.
 - `npm run setup:backend`
   Prepara el entorno Python.
 
@@ -139,7 +139,7 @@ Usa:
 npm run dev:full
 ```
 
-### Ejecucion local mas parecida a entrega
+### Ejecución local más parecida a entrega
 
 Usa:
 
@@ -152,7 +152,7 @@ En este modo:
 
 - el frontend se sirve desde `dist/`,
 - la API sigue estando en el mismo servidor Node,
-- la generacion continua disponible.
+- la generación continúa disponible.
 
 ## 8. API local disponible
 
@@ -183,7 +183,7 @@ Valores de `hospital` admitidos:
 - `clinico`
 - `gil`
 
-## 9. Flujo interno de generacion
+## 9. Flujo interno de generación
 
 Cuando pulsas `Generar con algoritmo` en la vista de cuadrante:
 
@@ -191,17 +191,17 @@ Cuando pulsas `Generar con algoritmo` en la vista de cuadrante:
 2. [server/index.mjs](</Front Limpieza/server/index.mjs>) lanza Python.
 3. Python ejecuta [generate_dashboard.py](</Front Limpieza/backend/generate_dashboard.py>).
 4. Ese script carga la copia local de [ilunion.ipynb](</Front Limpieza/backend/assets/algorithm/ilunion.ipynb>).
-5. Se reutiliza la logica del solver contenida en el notebook.
+5. Se reutiliza la lógica del solver contenida en el notebook.
 6. Se genera el Excel anual del hospital seleccionado.
 7. Se regenera el bloque correspondiente dentro de `dashboard-data.json`.
 8. El frontend recarga los datos y refresca la vista.
 
 Importante:
 
-- La generacion actual usa el notebook como fuente de verdad del algoritmo.
+- La generación actual usa el notebook como fuente de verdad del algoritmo.
 - Si cambia la estructura interna del notebook, puede ser necesario ajustar el wrapper Python.
 
-## 10. Como funciona el dashboard
+## 10. Cómo funciona el dashboard
 
 ### Vista Inicio
 
@@ -210,8 +210,8 @@ Muestra:
 - plantilla activa cargada,
 - cobertura estimada,
 - faltas de cobertura,
-- desvio medio anual,
-- accesos rapidos al resto de vistas.
+- desvío medio anual,
+- accesos rápidos al resto de vistas.
 
 ### Vista Cuadrante
 
@@ -219,21 +219,21 @@ Permite:
 
 - navegar por meses,
 - buscar trabajadores,
-- filtrar por categoria,
+- filtrar por categoría,
 - filtrar por turno base,
 - abrir el detalle de un trabajador,
 - editar celdas una a una,
 - ver un resumen de cobertura del mes,
 - exportar el estado visible del mes a CSV,
-- lanzar una nueva generacion,
-- descargar el Excel generado mas reciente.
+- lanzar una nueva generación,
+- descargar el Excel generado más reciente.
 
 ### Vista Cobertura
 
 Permite:
 
-- ver por dia y categoria el asignado frente al minimo,
-- detectar deficits,
+- ver por día y categoría el asignado frente al mínimo,
+- detectar déficits,
 - comprobar el efecto inmediato de los cambios manuales,
 - medir la cobertura mensual agregada.
 
@@ -243,31 +243,31 @@ Permite:
 
 - buscar por nombre,
 - buscar por plaza,
-- buscar por observacion,
-- filtrar por categoria,
+- buscar por observación,
+- filtrar por categoría,
 - abrir el detalle individual de la persona.
 
-### Vista Computo anual
+### Vista Cómputo anual
 
 Permite:
 
 - ver objetivo anual,
 - ver horas asignadas,
-- ver desvio,
+- ver desvío,
 - ordenar por nombre,
-- ordenar por desvio,
+- ordenar por desvío,
 - ordenar por porcentaje de cumplimiento.
 
-## 11. Como se anaden trabajadores
+## 11. Cómo se añaden trabajadores
 
-Los trabajadores no se anaden desde la interfaz.
-Se anaden modificando el Excel base:
+Los trabajadores no se añaden desde la interfaz.  
+Se añaden modificando el Excel base:
 
 - [Listado de Trabajadores.xlsx](</Front Limpieza/backend/assets/inputs/Listado de Trabajadores.xlsx>)
 
 ### Columnas que el sistema espera
 
-Como minimo deben mantenerse correctamente estas columnas:
+Como mínimo deben mantenerse correctamente estas columnas:
 
 - `TRABAJADOR`
 - `CENTRO`
@@ -278,18 +278,18 @@ Como minimo deben mantenerse correctamente estas columnas:
 - `HORAS/AÑO`
 - `observaciones`
 
-### Recomendacion practica
+### Recomendación práctica
 
-La forma mas segura de anadir una persona es:
+La forma más segura de añadir una persona es:
 
-1. Duplicar una fila valida de un trabajador similar.
+1. Duplicar una fila válida de un trabajador similar.
 2. Cambiar sus datos.
 3. Mantener intactos los nombres de las columnas.
 4. Guardar el Excel.
 5. Volver al dashboard.
 6. Pulsar `Generar con algoritmo`.
 
-### Reglas practicas al cargar un nuevo trabajador
+### Reglas prácticas al cargar un nuevo trabajador
 
 - `CENTRO` debe corresponder al hospital correcto.
 - `TURNO` debe seguir el mismo formato que las filas ya existentes.
@@ -297,34 +297,34 @@ La forma mas segura de anadir una persona es:
 - `PLAZAS` y `PUESTO` deben mantenerse consistentes con el resto del Excel.
 - `observaciones` debe escribirse en el mismo lenguaje operativo que ya usa el fichero.
 
-Ejemplos de observaciones tipicas que el algoritmo ya contempla a nivel operativo:
+Ejemplos de observaciones típicas que el algoritmo ya contempla a nivel operativo:
 
 - `DE LUNES A VIERNES`
-- `UN FIN DE SEMANA SI Y UNO NO`
-- `UN FIN DE SEMANA SI Y DOS FIN DE SEMANA NO`
-- `TRABAJAN UNA NOCHE SI UNA NOCHE NO`
-- `15 DIAS MAÑANA/15 DIAS TARDE`
+- `UN FIN DE SEMANA SÍ Y UNO NO`
+- `UN FIN DE SEMANA SÍ Y DOS FINES DE SEMANA NO`
+- `TRABAJAN UNA NOCHE SÍ Y UNA NOCHE NO`
+- `15 DÍAS MAÑANA / 15 DÍAS TARDE`
 
-## 12. Como cambiar las necesidades minimas
+## 12. Cómo cambiar las necesidades mínimas
 
-Las presencias minimas salen de:
+Las presencias mínimas salen de:
 
 - [PRESENCIAS.xlsx](</Front Limpieza/backend/assets/inputs/PRESENCIAS.xlsx>)
 
 Si cambias ese Excel:
 
 1. guarda el fichero,
-2. vuelve a lanzar la generacion,
-3. la vista de cobertura se recalculara con esos nuevos minimos.
+2. vuelve a lanzar la generación,
+3. la vista de cobertura se recalculará con esos nuevos mínimos.
 
-## 13. Que pasa con los cambios manuales
+## 13. Qué pasa con los cambios manuales
 
 Esto es importante para operar bien el dashboard:
 
-- Los cambios manuales del cuadrante se aplican en memoria dentro de la sesion actual.
+- Los cambios manuales del cuadrante se aplican en memoria dentro de la sesión actual.
 - Esos cambios afectan inmediatamente a la vista de cobertura.
 - Esos cambios no se escriben ahora mismo de vuelta al Excel anual ni al JSON base.
-- Si recargas la pagina o regeneras, el cuadrante vuelve al estado generado por el algoritmo.
+- Si recargas la página o regeneras, el cuadrante vuelve al estado generado por el algoritmo.
 - Si quieres sacar una foto del estado visible tras tus cambios, usa `Exportar CSV`.
 
 En otras palabras:
@@ -334,24 +334,24 @@ En otras palabras:
 
 ## 14. Componentes principales
 
-- [src/App.jsx](</Front Limpieza/src/App.jsx>)
+- [src/App.jsx](</Front Limpieza/src/App.jsx>)  
   Estado global, hospital activo, vista activa y recarga de datos.
-- [src/views/ScheduleView.jsx](</Front Limpieza/src/views/ScheduleView.jsx>)
-  Cuadrante mensual, edicion y generacion.
-- [src/views/CoverageView.jsx](</Front Limpieza/src/views/CoverageView.jsx>)
-  Cobertura diaria real frente a minimos.
-- [src/views/WorkersView.jsx](</Front Limpieza/src/views/WorkersView.jsx>)
+- [src/views/ScheduleView.jsx](</Front Limpieza/src/views/ScheduleView.jsx>)  
+  Cuadrante mensual, edición y generación.
+- [src/views/CoverageView.jsx](</Front Limpieza/src/views/CoverageView.jsx>)  
+  Cobertura diaria real frente a mínimos.
+- [src/views/WorkersView.jsx](</Front Limpieza/src/views/WorkersView.jsx>)  
   Plantilla, observaciones y detalle de personas.
-- [src/views/HoursView.jsx](</Front Limpieza/src/views/HoursView.jsx>)
-  Computo anual.
-- [src/services/dataService.js](</Front Limpieza/src/services/dataService.js>)
-  Lectura y normalizacion de datos.
-- [src/services/schedulerGateway.js](</Front Limpieza/src/services/schedulerGateway.js>)
+- [src/views/HoursView.jsx](</Front Limpieza/src/views/HoursView.jsx>)  
+  Cómputo anual.
+- [src/services/dataService.js](</Front Limpieza/src/services/dataService.js>)  
+  Lectura y normalización de datos.
+- [src/services/schedulerGateway.js](</Front Limpieza/src/services/schedulerGateway.js>)  
   Cliente de la API del generador.
-- [backend/generate_dashboard.py](</Front Limpieza/backend/generate_dashboard.py>)
+- [backend/generate_dashboard.py](</Front Limpieza/backend/generate_dashboard.py>)  
   Wrapper Python que une notebook, Excel y dashboard.
 
-## 15. Que se usa realmente para ejecutar el sistema
+## 15. Qué se usa realmente para ejecutar el sistema
 
 Necesario para funcionamiento:
 
@@ -373,16 +373,16 @@ Recreable o regenerable:
 
 ## 16. Limitaciones actuales
 
-- El motor de generacion sigue acoplado al notebook original.
-- Las ediciones manuales no se persisten aun como nueva fuente de verdad.
-- El dashboard esta preparado para producto local, pero no para despliegue multiusuario ni concurrencia.
-- El año operativo esta fijado en la integracion actual a `2026`.
+- El motor de generación sigue acoplado al notebook original.
+- Las ediciones manuales no se persisten aún como nueva fuente de verdad.
+- El dashboard está preparado para producto local, pero no para despliegue multiusuario ni concurrencia.
+- El año operativo está fijado en la integración actual a `2026`.
 
-## 17. Siguiente evolucion natural
+## 17. Siguiente evolución natural
 
-Los siguientes pasos tecnicos mas razonables son:
+Los siguientes pasos técnicos más razonables son:
 
-1. extraer el notebook a un modulo Python limpio,
+1. extraer el notebook a un módulo Python limpio,
 2. persistir cambios manuales con un flujo controlado,
-3. permitir configuracion de año y fuentes desde la interfaz,
-4. preparar empaquetado mas estable para entrega a terceros.
+3. permitir configuración de año y fuentes desde la interfaz,
+4. preparar empaquetado más estable para entrega a terceros.
